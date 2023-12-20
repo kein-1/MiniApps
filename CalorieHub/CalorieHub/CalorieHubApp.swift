@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct CalorieHubApp: App {
+    
+    @State private var healthStore = HealthStore()
+    
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(healthStore: healthStore)
         }
     }
 }
