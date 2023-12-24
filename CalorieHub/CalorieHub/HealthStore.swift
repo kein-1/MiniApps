@@ -34,30 +34,71 @@ class HealthStore{
     }
     
     
-     // need to set these up in the app's p.list - keys required for getting this to work. Per docs : You must set the usage keys, or your app will crash when you request authorization.
-
+ // need to set these up in the app's p.list - keys required for getting this to work. Per docs : You must set the usage keys, or your app will crash when you request authorization.
 //    Customize the messages displayed on the permissions sheet by setting the following keys:
 //    NSHealthShareUsageDescription customizes the message for reading data.
 //    NSHealthUpdateUsageDescription customizes the message for writing data.
     
-    // HKHealthStore.requestAuthorization is async method, so we need to add async/await . it also throws error, so catch
+    
     func requestAuthorization() {
         // These return optionals so unwrap. Basically sets up the data we want to read/write
-        guard let stepCount = HKObjectType.quantityType(forIdentifier: .stepCount) else { return }
-        guard let caloriesBurned = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned) else { return }
-        guard let weight = HKObjectType.quantityType(forIdentifier: .bodyMass) else { return }
-        guard let walkingSpeed = HKObjectType.quantityType(forIdentifier: .walkingSpeed) else { return }
+        guard let stepCount = HKQuantityType.quantityType(forIdentifier: .stepCount) else { return }
+        guard let caloriesBurned = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned) else { return }
+        guard let weight = HKQuantityType.quantityType(forIdentifier: .bodyMass) else { return }
+        guard let height = HKQuantityType.quantityType(forIdentifier: .height) else { return }
+        guard let walkingSpeed = HKQuantityType.quantityType(forIdentifier: .walkingSpeed) else { return }
         
         //Since healthStore is also optional, we need to unwrap here as well
         guard let healthStore = self.healthStore else { return }
         
-        let allTypes = Set([stepCount, caloriesBurned, weight, walkingSpeed])
+        let allTypes = Set([stepCount, caloriesBurned, weight, height, walkingSpeed])
         
         healthStore.requestAuthorization(toShare: allTypes , read: allTypes) { (success, error) in
-            if !success {
+            if success {
+            } else {
                 print("error in authorization")
             }
         } // want to share and read everything
+    }
+    
+    
+    func requestAuthHeightWeight() {
+        // These return optionals so unwrap. Basically sets up the data we want to read/write
+       
+        
+        
+        //Since healthStore is also optional, we need to unwrap here as well
+        guard let healthStore = self.healthStore else { return }
+        
+        
+        guard let weight = HKQuantityType.quantityType(forIdentifier: .bodyMass) else { return }
+        guard let height = HKQuantityType.quantityType(forIdentifier: .height) else { return }
+        
+       
+        
+        let allTypes = Set([weight, height])
+        
+        healthStore.requestAuthorization(toShare: allTypes , read: allTypes) { (success, error) in
+            if success {
+                
+            } else {
+                print("error in authorization")
+            }
+        } // want to share and read everything
+    }
+    
+    func savingUserWeightAndHeight(_ weight : Double, _ height : Double) {
+        guard let healthStore = self.healthStore else { return }
+        guard let weight = HKQuantityType.quantityType(forIdentifier: .bodyMass) else{ return }
+        guard let height = HKQuantityType.quantityType(forIdentifier: .height) else { return }
+        
+        let statusWeight = healthStore.authorizationStatus(for: weight)
+        let statusHeight = healthStore.authorizationStatus(for: height)
+        
+        if statusWeight.rawValue == 2 && statusHeight.rawValue == 2 {
+            print("we are good")
+        }
+        
         
     }
     

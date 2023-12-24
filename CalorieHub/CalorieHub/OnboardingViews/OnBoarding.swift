@@ -10,6 +10,7 @@ import SwiftUI
 struct OnBoarding: View {
     
     @State private var selection = 0
+    @Binding var isOnboarding : Bool
     
     var body: some View {
         VStack {
@@ -19,19 +20,21 @@ struct OnBoarding: View {
                 .padding(.bottom, 50)
             
             TabView(selection: $selection) {
-                PersonalInfoView(selection: $selection)
+                WelcomeView(selection: $selection)
                     .tag(0)
-                Text("Screen 2")
+                PersonalInfoView(selection: $selection)
                     .tag(1)
-                Text("Screen 3")
+                FinishView(isOnboarding: $isOnboarding)
                     .tag(2)
+                
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-            
         }
     }
 }
 
 #Preview {
-    OnBoarding()
+    let healthStore = HealthStore()
+    return OnBoarding(isOnboarding: .constant(false))
+        .environment(healthStore)
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct PersonalInfoView: View {
     
     // Mark : - Properties
-    
+    @Environment(HealthStore.self) var healthStore
     @Binding var selection : Int
     @State private var userAge : Int?
     @State private var userWeight : Double?
@@ -23,7 +23,7 @@ struct PersonalInfoView: View {
             
             HStack {
                 Text("Tell us about")
-                Text("yourself")
+                Text("yourself!")
                     .foregroundStyle(.orange)
             }
             .font(.headline)
@@ -39,15 +39,15 @@ struct PersonalInfoView: View {
                 
                 
                 Section {
-                    TextField("Enter weight", value: $userWeight, format: .number)
+                    TextField("Enter weight (lbs)", value: $userWeight, format: .number)
                 } header: {
-                    Text("Weight")
+                    Text("Weight (lbs)")
                 }
                 
                 Section {
-                    TextField("Enter weight", value: $userHeight, format: .number)
+                    TextField("Enter height (in)", value: $userHeight, format: .number)
                 } header: {
-                    Text("Weight")
+                    Text("Height (in)")
                 }
             }
             .listStyle(.plain)
@@ -56,20 +56,22 @@ struct PersonalInfoView: View {
             
             Spacer()
             
-            // Mark : - Next screen
+            // Mark : - Save user data + Next screen
             
             Button{
-                selection += 1
-                // save health data here
+                healthStore.savingUserWeightAndHeight(userWeight ?? 0, userHeight ?? 0)
+//                selection += 1
             } label: {
-                Text("Next")
-                .foregroundStyle(.white)
-                .frame(width: 300, height: 100)
-                .background(.orange.opacity(0.8))
-                .clipShape(Circle())
+                CustomLabel()
             }
         }
+        .onAppear {
+            healthStore.requestAuthHeightWeight()
+        }
     }
+    
+    
+    
 }
 //
 //#Preview {
