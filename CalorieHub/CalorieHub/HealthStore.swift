@@ -64,8 +64,6 @@ class HealthStore{
     
     func requestAuthHeightWeight() {
         // These return optionals so unwrap. Basically sets up the data we want to read/write
-       
-        
         
         //Since healthStore is also optional, we need to unwrap here as well
         guard let healthStore = self.healthStore else { return }
@@ -74,7 +72,6 @@ class HealthStore{
         guard let weight = HKQuantityType.quantityType(forIdentifier: .bodyMass) else { return }
         guard let height = HKQuantityType.quantityType(forIdentifier: .height) else { return }
         
-       
         
         let allTypes = Set([weight, height])
         
@@ -87,19 +84,76 @@ class HealthStore{
         } // want to share and read everything
     }
     
-    func savingUserWeightAndHeight(_ weight : Double, _ height : Double) {
+    
+    // Mark: Method for saving the user's height and weight. Creates the HKQuantityType, checks for authorization status, and requests authorization to save
+    func savingUserWeightAndHeight(_ userWeight : Double, _ userHeight : Double) {
+        
+        // check healthstore and health types
         guard let healthStore = self.healthStore else { return }
-        guard let weight = HKQuantityType.quantityType(forIdentifier: .bodyMass) else{ return }
-        guard let height = HKQuantityType.quantityType(forIdentifier: .height) else { return }
+        guard let weightType = HKQuantityType.quantityType(forIdentifier: .bodyMass) else{ return }
+        guard let heightType = HKQuantityType.quantityType(forIdentifier: .height) else { return }
         
-        let statusWeight = healthStore.authorizationStatus(for: weight)
-        let statusHeight = healthStore.authorizationStatus(for: height)
+        // check authorization status first
+        let statusWeight = healthStore.authorizationStatus(for: weightType)
+        let statusHeight = healthStore.authorizationStatus(for: heightType)
         
+        let types = Set([weightType, heightType])
+        
+        // this means user already approved, so just save it
         if statusWeight.rawValue == 2 && statusHeight.rawValue == 2 {
-            print("we are good")
+            saveWeightSample(userWeight, weightType)
+            saveHeightSample(userHeight, heightType)
+        } else {
+            print("i ran here")
+            // this means user has not approved, so request access first
+            healthStore.requestAuthorization(toShare: types , read: types) { (success, error) in
+                if success {
+                    self.saveWeightSample(userWeight, weightType)
+                    self.saveHeightSample(userHeight, heightType)
+                } else {
+                    print("error in authorization")
+                }
+            }
         }
+    }
+    
+    // Mark: Helper method for the actual saving of the user's weight
+    // Creates the HKQuantity and HKQuantitySample
+    
+    func saveWeightSample(_ weight : Double, _ weightHKType : HKQuantityType){
+        guard let healthStore = self.healthStore else { return }
+        // create HK quantity objects
+        let userWeightQuantity = HKQuantity(unit: .pound(), doubleValue: weight)
         
+        // create a HKQuantitySample, which represents the data to be saved
+        let userWeightSample = HKQuantitySample(type: weightHKType, quantity: userWeightQuantity, start: Date(), end: Date())
         
+        // call the save method
+        healthStore.save(userWeightSample) { success,error in
+            if success {
+                print("Saved user weight")
+            } else {
+                print("Failed to save user weight")
+            }
+        }
+    }
+    
+    func saveHeightSample(_ height : Double, _ heightHKType : HKQuantityType){
+        guard let healthStore = self.healthStore else { return }
+        // create HK quantity objects
+        let userHeightQuantity = HKQuantity(unit: .inch(), doubleValue: height)
+        
+        // create a HKQuantitySample, which represents the data to be saved
+        let userHeightSample = HKQuantitySample(type: heightHKType, quantity: userHeightQuantity, start: Date(), end: Date())
+        
+        // call the save method
+        healthStore.save(userHeightSample) { success,error in
+            if success {
+                print("Saved user height")
+            } else {
+                print("Failed to save user height")
+            }
+        }
     }
     
 }
