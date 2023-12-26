@@ -65,9 +65,6 @@ struct PersonalInfoView: View {
                 CustomLabel()
             }
         }
-        .onAppear {
-            healthStore.requestAuthHeightWeight()
-        }
     }
     
     
