@@ -30,7 +30,7 @@ struct WelcomeView: View {
                     selection += 1
                 }
             } label: {
-                CustomLabel()
+                CustomLabel(text: "Next")
             }
         }
         .transition(.slide)

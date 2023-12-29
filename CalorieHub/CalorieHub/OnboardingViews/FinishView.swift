@@ -15,7 +15,7 @@ struct FinishView: View {
         VStack(spacing: 40) {
            
             
-            Text("Great ! Press next to complete the process")
+            Text("Great ! Press the button to complete the process")
                 .padding()
             
             Spacer()
@@ -23,7 +23,7 @@ struct FinishView: View {
             Button {
                 isOnboarding = false
             } label: {
-                CustomLabel()
+                CustomLabel(text: "Done!")
             }
         }
         .transition(.slide)

@@ -10,7 +10,6 @@ import HealthKit
 
 struct ContentView: View {
     
-    var healthStore : HealthStore
     
     var body: some View {
         TabView {
@@ -25,12 +24,12 @@ struct ContentView: View {
             .padding()
             .border(.blue)
             .tabItem {
-                Label("random", systemImage: "figure.walk")
+                Label("Home", systemImage: "house")
             }
             
-            Text("view1")
+            FoodCategoriesView()
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("Add a Food", systemImage: "plus.app")
                 }
             Text("view2")
                 .tabItem {
@@ -43,6 +42,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    let healthStore = HealthStore()
-    return ContentView(healthStore: healthStore)
+    ContentView()
 }
