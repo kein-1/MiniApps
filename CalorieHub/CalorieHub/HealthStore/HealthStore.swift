@@ -9,6 +9,8 @@ import Foundation
 import HealthKit
 import Observation
 
+// Add info about saving protein, carb, fats, and calories ( think this is dietary energy)(
+
 
 enum HealthErrors : Error {
     case healthDataNotAvailable
@@ -20,6 +22,7 @@ class HealthStore{
     
     var healthStore : HKHealthStore?
     var error : HealthErrors?
+    
     
     init() {
         // Step 1 :
@@ -118,12 +121,14 @@ class HealthStore{
     }
     
     // Mark: Helper method for the actual saving of the user's weight
-    // Creates the HKQuantity and HKQuantitySample
+    // Creates the HKQuantity and HKQuantitySample. When saving data
+    // use HKSample subclasses (HKQuantitySample for example)
     
     func saveWeightSample(_ weight : Double, _ weightHKType : HKQuantityType){
         guard let healthStore = self.healthStore else { return }
         // create HK quantity objects
         let userWeightQuantity = HKQuantity(unit: .pound(), doubleValue: weight)
+        
         
         // create a HKQuantitySample, which represents the data to be saved
         let userWeightSample = HKQuantitySample(type: weightHKType, quantity: userWeightQuantity, start: Date(), end: Date())

@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct CustomLabel: View {
+    var text : String
     var body: some View {
-        Text("Next")
+        Text(text)
         .foregroundStyle(.white)
+        .padding()
         .frame(width: 300, height: 100)
         .background(.orange.opacity(0.8))
         .clipShape(Circle())
+        
+        
     }
 }
 
-//#Preview {
-//    CustomLabel()
-//}
+#Preview {
+    CustomLabel(text: "text")
+}

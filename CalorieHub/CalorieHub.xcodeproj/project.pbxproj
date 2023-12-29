@@ -12,6 +12,10 @@
 		8C2D9F852B38CBF4009180F7 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D9F842B38CBF3009180F7 /* WelcomeView.swift */; };
 		8C2D9F892B38D169009180F7 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D9F882B38D169009180F7 /* CustomLabel.swift */; };
 		8C2D9F8B2B38DA29009180F7 /* FinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D9F8A2B38DA29009180F7 /* FinishView.swift */; };
+		8C2D9F8D2B3DDCF0009180F7 /* PrimaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D9F8C2B3DDCF0009180F7 /* PrimaryView.swift */; };
+		8C2D9F902B3DE096009180F7 /* FoodCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D9F8F2B3DE096009180F7 /* FoodCategoriesView.swift */; };
+		8C2D9F932B3DE0C7009180F7 /* FoodCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D9F922B3DE0C7009180F7 /* FoodCard.swift */; };
+		8C2D9F952B3F62C8009180F7 /* AddFoodForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D9F942B3F62C8009180F7 /* AddFoodForm.swift */; };
 		8C8CC1B32B328EA40084B4DE /* CalorieHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8CC1B22B328EA40084B4DE /* CalorieHubApp.swift */; };
 		8C8CC1B72B328EA60084B4DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C8CC1B62B328EA60084B4DE /* Assets.xcassets */; };
 		8C8CC1BA2B328EA60084B4DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C8CC1B92B328EA60084B4DE /* Preview Assets.xcassets */; };
@@ -27,6 +31,10 @@
 		8C2D9F842B38CBF3009180F7 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		8C2D9F882B38D169009180F7 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		8C2D9F8A2B38DA29009180F7 /* FinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishView.swift; sourceTree = "<group>"; };
+		8C2D9F8C2B3DDCF0009180F7 /* PrimaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryView.swift; sourceTree = "<group>"; };
+		8C2D9F8F2B3DE096009180F7 /* FoodCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoriesView.swift; sourceTree = "<group>"; };
+		8C2D9F922B3DE0C7009180F7 /* FoodCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCard.swift; sourceTree = "<group>"; };
+		8C2D9F942B3F62C8009180F7 /* AddFoodForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodForm.swift; sourceTree = "<group>"; };
 		8C8CC1AF2B328EA40084B4DE /* CalorieHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalorieHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8CC1B22B328EA40084B4DE /* CalorieHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieHubApp.swift; sourceTree = "<group>"; };
 		8C8CC1B62B328EA60084B4DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,6 +69,24 @@
 			path = OnboardingViews;
 			sourceTree = "<group>";
 		};
+		8C2D9F8E2B3DE080009180F7 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				8C2D9F8F2B3DE096009180F7 /* FoodCategoriesView.swift */,
+				8C2D9F922B3DE0C7009180F7 /* FoodCard.swift */,
+				8C2D9F942B3F62C8009180F7 /* AddFoodForm.swift */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
+		8C2D9F912B3DE0A7009180F7 /* HealthStore */ = {
+			isa = PBXGroup;
+			children = (
+				8C8CC1C02B328EC20084B4DE /* HealthStore.swift */,
+			);
+			path = HealthStore;
+			sourceTree = "<group>";
+		};
 		8C8CC1A62B328EA40084B4DE = {
 			isa = PBXGroup;
 			children = (
@@ -80,14 +106,16 @@
 		8C8CC1B12B328EA40084B4DE /* CalorieHub */ = {
 			isa = PBXGroup;
 			children = (
+				8C2D9F912B3DE0A7009180F7 /* HealthStore */,
+				8C2D9F8E2B3DE080009180F7 /* Forms */,
 				8C2D9F812B329EB0009180F7 /* OnboardingViews */,
 				8C8CC1CA2B328F140084B4DE /* Model */,
 				8C8CC1C92B328F050084B4DE /* Notes */,
 				8C8CC1C82B328EE90084B4DE /* CalorieHub.entitlements */,
+				8C2D9F8C2B3DDCF0009180F7 /* PrimaryView.swift */,
 				8C8CC1B22B328EA40084B4DE /* CalorieHubApp.swift */,
 				8C8CC1B62B328EA60084B4DE /* Assets.xcassets */,
 				8C8CC1C32B328EC20084B4DE /* ContentView.swift */,
-				8C8CC1C02B328EC20084B4DE /* HealthStore.swift */,
 				8C8CC1B82B328EA60084B4DE /* Preview Content */,
 			);
 			path = CalorieHub;
@@ -191,12 +219,16 @@
 				8C2D9F832B329F17009180F7 /* PersonalInfoView.swift in Sources */,
 				8C8CC1C62B328EC20084B4DE /* FoodModel.swift in Sources */,
 				8C8CC1B32B328EA40084B4DE /* CalorieHubApp.swift in Sources */,
+				8C2D9F932B3DE0C7009180F7 /* FoodCard.swift in Sources */,
 				8C8CC1C72B328EC20084B4DE /* ContentView.swift in Sources */,
+				8C2D9F952B3F62C8009180F7 /* AddFoodForm.swift in Sources */,
 				8C8CC1C42B328EC20084B4DE /* HealthStore.swift in Sources */,
 				8C2D9F802B329D66009180F7 /* OnBoarding.swift in Sources */,
 				8C2D9F852B38CBF4009180F7 /* WelcomeView.swift in Sources */,
 				8C2D9F892B38D169009180F7 /* CustomLabel.swift in Sources */,
 				8C2D9F8B2B38DA29009180F7 /* FinishView.swift in Sources */,
+				8C2D9F8D2B3DDCF0009180F7 /* PrimaryView.swift in Sources */,
+				8C2D9F902B3DE096009180F7 /* FoodCategoriesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

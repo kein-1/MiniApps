@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct CalorieHubApp: App {
@@ -16,10 +17,11 @@ struct CalorieHubApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(healthStore: healthStore)
+            ContentView()
+                .environment(healthStore)
+                .modelContainer(for: Food.self)
                 .fullScreenCover(isPresented: $isOnBoarding) {
                     OnBoarding(isOnboarding: $isOnBoarding)
-                        .environment(healthStore)
                 }
         }
     }

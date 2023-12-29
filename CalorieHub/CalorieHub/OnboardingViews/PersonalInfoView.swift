@@ -62,7 +62,7 @@ struct PersonalInfoView: View {
                 healthStore.savingUserWeightAndHeight(userWeight ?? 0, userHeight ?? 0)
 //                selection += 1
             } label: {
-                CustomLabel()
+                CustomLabel(text: "Next")
             }
         }
     }
