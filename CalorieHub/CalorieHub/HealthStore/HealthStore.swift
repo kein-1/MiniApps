@@ -18,11 +18,11 @@ enum HealthErrors : Error {
 }
 
 @Observable
-class HealthStore{
+class HealthStore {
     
     var healthStore : HKHealthStore?
     var error : HealthErrors?
-    
+    var stepsGoal : Double = 0
     
     init() {
         // Step 1 :
@@ -107,7 +107,7 @@ class HealthStore{
             saveWeightSample(userWeight, weightType)
             saveHeightSample(userHeight, heightType)
         } else {
-            print("i ran here")
+            
             // this means user has not approved, so request access first
             healthStore.requestAuthorization(toShare: types , read: types) { (success, error) in
                 if success {

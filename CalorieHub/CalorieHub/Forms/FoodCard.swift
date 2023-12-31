@@ -17,12 +17,12 @@ struct FoodCard: View {
             Image(categoryName)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity) // had to use this to get images to fit properly in the grid
                 .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
         }
     }
 }
-
-#Preview {
-    FoodCard(categoryName: "Sweets")
-}
+//
+//#Preview {
+//    FoodCard(categoryName: "Sweets")
+//}
