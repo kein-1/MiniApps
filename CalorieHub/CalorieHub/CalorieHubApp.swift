@@ -27,10 +27,11 @@ struct CalorieHubApp: App {
             ContentView()
                 .environment(healthStore)
                 .environment(viewModel)
-                .modelContainer(for: Food.self)
+                .modelContainer(for: [Food.self,UserGoals.self])
                 .fullScreenCover(isPresented: $isOnBoarding) {
                     OnBoarding(isOnboarding: $isOnBoarding)
                         .environment(healthStore) // had to add this here as well to allow environment
+                        .modelContainer(for: [Food.self,UserGoals.self])
                 }
         }
     }

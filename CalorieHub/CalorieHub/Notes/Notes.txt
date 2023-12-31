@@ -28,3 +28,8 @@ HealthKit :
 1. Classes/Methods used :
 1a. HKSample(HKQuantitySample), HKObjectType(HKQuantityType), and HKQuantity
 2. Healthstore, authorizationStatus, requestAuthorization
+
+
+Great writeup for swiftdata and populating containers : https://www.andrewcbancroft.com/blog/ios-development/data-persistence/pre-populate-swiftdata-persistent-store/
+
+My project was crashing a lot 

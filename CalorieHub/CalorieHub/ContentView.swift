@@ -21,6 +21,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Add a Food", systemImage: "plus.app")
                 }
+                
             Text("view2")
                 .tabItem {
                     Label("Personal", systemImage: "person")

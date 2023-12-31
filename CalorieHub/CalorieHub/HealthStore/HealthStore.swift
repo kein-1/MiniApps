@@ -89,12 +89,15 @@ class HealthStore {
     
     
     // Mark: Method for saving the user's height and weight. Creates the HKQuantityType, checks for authorization status, and requests authorization to save
-    func savingUserWeightAndHeight(_ userWeight : Double, _ userHeight : Double) {
+    func savingUserData(_ userWeight : Double?, _ userHeight : Double?) {
         
         // check healthstore and health types
         guard let healthStore = self.healthStore else { return }
         guard let weightType = HKQuantityType.quantityType(forIdentifier: .bodyMass) else{ return }
         guard let heightType = HKQuantityType.quantityType(forIdentifier: .height) else { return }
+        
+        guard let userWeight = userWeight else { return }
+        guard let userHeight = userHeight else { return }
         
         // check authorization status first
         let statusWeight = healthStore.authorizationStatus(for: weightType)
