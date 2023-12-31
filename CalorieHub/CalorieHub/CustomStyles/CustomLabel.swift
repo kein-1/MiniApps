@@ -16,11 +16,11 @@ struct CustomLabel: View {
         .frame(width: 300, height: 100)
         .background(.orange.opacity(0.8))
         .clipShape(Circle())
-        
-        
     }
 }
 
 #Preview {
-    CustomLabel(text: "text")
+    CustomLabel(text: "text123")
 }
+
+

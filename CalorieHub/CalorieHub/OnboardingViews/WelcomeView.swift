@@ -20,7 +20,17 @@ struct WelcomeView: View {
             }
             .font(.headline)
             
-            Text("The goal of this app is to promote improve your health and fitness. Press next to continue")
+            
+            Image("Polarbear")
+                .resizable()
+                .interpolation(.high)
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: 300)
+                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                
+            
+            Text("This app is aimed to help you track your calories and reach your goals! Click the button below to begin onboarding")
+                .font(.subheadline)
                 .padding()
             
             Spacer()
@@ -36,7 +46,7 @@ struct WelcomeView: View {
         .transition(.slide)
     }
 }
-//
-//#Preview {
-//    WelcomeView()
-//}
+
+#Preview {
+    WelcomeView(selection: .constant(1))
+}

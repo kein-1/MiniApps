@@ -17,15 +17,18 @@ struct OnBoarding: View {
             Text("caloriehub")
                 .font(.title)
                 .foregroundStyle(.orange)
-                .padding(.bottom, 50)
+                .padding(.bottom, 15)
             
             TabView(selection: $selection) {
                 WelcomeView(selection: $selection)
                     .tag(0)
+                    .gesture(DragGesture()) // disables swiping
                 PersonalInfoView(selection: $selection)
                     .tag(1)
+                    .gesture(DragGesture())
                 FinishView(isOnboarding: $isOnboarding)
                     .tag(2)
+                    .gesture(DragGesture())
                 
             }
             .tabViewStyle(.page(indexDisplayMode: .never))

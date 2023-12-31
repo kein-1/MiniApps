@@ -15,14 +15,13 @@ struct FoodCategoriesView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 30) {
-                    ForEach(images, id: \.self){ images in
+                LazyVGrid(columns: columns, spacing: 45) {
+                    ForEach(images, id: \.self){ image in
                         NavigationLink {
-                            AddFoodForm(category: images)
+                            AddFoodForm(category: image)
                         } label: {
-                            FoodCard(categoryName: images)
+                            FoodCard(categoryName: image)
                         }
-                       
                         .foregroundStyle(.orange)
                     }
                 }

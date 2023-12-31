@@ -7,11 +7,18 @@
 
 import SwiftUI
 import SwiftData
+import Observation
 
 @main
 struct CalorieHubApp: App {
     
+    // Mark : View Model
+    @State private var viewModel = ViewModel()
+    
+    // Mark : Health Store
     @State private var healthStore = HealthStore()
+    
+    // Mark : AppStorage boolean checking whether the user is onboarded
     @AppStorage("isOnBoarding") private var isOnBoarding : Bool = true
     
     
@@ -19,9 +26,11 @@ struct CalorieHubApp: App {
         WindowGroup {
             ContentView()
                 .environment(healthStore)
+                .environment(viewModel)
                 .modelContainer(for: Food.self)
                 .fullScreenCover(isPresented: $isOnBoarding) {
                     OnBoarding(isOnboarding: $isOnBoarding)
+                        .environment(healthStore) // had to add this here as well to allow environment
                 }
         }
     }

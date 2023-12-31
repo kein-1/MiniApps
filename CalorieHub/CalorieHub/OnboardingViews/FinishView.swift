@@ -15,8 +15,12 @@ struct FinishView: View {
         VStack(spacing: 40) {
            
             
-            Text("Great ! Press the button to complete the process")
-                .padding()
+            Image("Orange")
+                .resizable()
+                .interpolation(.high)
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: 300)
+                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
             
             Spacer()
             
