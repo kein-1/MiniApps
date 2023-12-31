@@ -17,7 +17,7 @@ struct AddFoodForm: View {
     
     //Mark:  name, calories, fats, carbs, protein
     // keep this in-line with title and placeholder. 1:1 match
-    @State private var arr : [String] = Array(repeating: "", count: 5)
+    @State private var arr : [String?] = Array(repeating: "", count: 5)
     
     var title = Food.sectionTitles
     var placeHolder = Food.textFieldPlaceholders
@@ -51,12 +51,11 @@ struct AddFoodForm: View {
     
     
     func addFood() {
-        let name = arr[0]
-        let calories = Double(arr[1]) ?? -1
-        let fats = Double(arr[2]) ?? -1
-        let protein = Double(arr[3]) ?? -1
-        let carbs = Double(arr[4]) ?? -1
-        let food = Food(name, category, calories, fats, protein, carbs, mealTime)
+        
+        let name = arr[0] ?? ""
+        let calories = arr[1] ?? ""
+        
+        let food = Food(name , category, calories, arr[2], arr[3], arr[4], mealTime)
         context.insert(food)
     }
 }

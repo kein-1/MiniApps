@@ -17,35 +17,34 @@ struct PrimaryView: View {
 //    
     @Query(filter: Food.currentPredicate()) var foods : [Food]
     
+    
     var body: some View {
         NavigationStack {
             List(Food.mealTimes, id: \.self) { mealTime in
                 Section {
                     ForEach(foods) { food in
-                        VStack {
-                            FoodDisplayItem(food: food)
+                        if food.mealTime == mealTime {
+                            VStack {
+                                FoodDisplayItem(food: food)
+                            }
                         }
-                        Text(food.category)
                     }
                 } header: {
                     Text(mealTime)
                         .foregroundStyle(.orange)
-                        .font(.headline.bold())
+//                        .font(.headline.bold())
                 }
             }
-        }
-        .onAppear {
-            print(foods)
         }
     }
     
 }
-//
-//#Preview {
-//    var healthStore = HealthStore()
-//    var viewModel = ViewModel()
-//    return PrimaryView()
-//        .environment(healthStore)
-//        .environment(viewModel)
-//        .modelContainer(for: Food.self)
-//}
+
+#Preview {
+    var healthStore = HealthStore()
+    var viewModel = ViewModel()
+    return PrimaryView()
+        .environment(healthStore)
+        .environment(viewModel)
+        .modelContainer(previewContainer)
+}

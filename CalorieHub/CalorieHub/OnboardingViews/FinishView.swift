@@ -19,8 +19,12 @@ struct FinishView: View {
                 .resizable()
                 .interpolation(.high)
                 .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 300)
+                .frame(maxWidth: 250)
                 .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+            
+            Text("Great work ! You've completed on-boarding. Click done to begin your journey!")
+                .font(.subheadline)
+                .padding()
             
             Spacer()
             
@@ -33,7 +37,7 @@ struct FinishView: View {
         .transition(.slide)
     }
 }
-//
-//#Preview {
-//    FinishView()
-//}
+
+#Preview {
+    FinishView(isOnboarding: .constant(false))
+}

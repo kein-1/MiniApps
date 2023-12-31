@@ -6,17 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PersonalInfoView: View {
     
     // Mark : - Properties
     @Environment(HealthStore.self) private var healthStore
     
+    @Environment(\.modelContext) private var context
+    
     @Binding var selection : Int
     @State private var userAge : Int?
     @State private var userWeight : Double?
     @State private var userHeight : Double?
-    @State private var userGoal : Double?
+    
+    @State private var userWeightGoal : Double?
     @State private var userStepsGoal : Double?
     
     var body: some View {
@@ -30,8 +34,6 @@ struct PersonalInfoView: View {
                     .foregroundStyle(.orange)
             }
             .font(.headline)
-            
-            
             
             List {
                 Section {
@@ -57,14 +59,14 @@ struct PersonalInfoView: View {
                 }
                 
                 Section {
-                    TextField("Enter goal weight (lbs)", value: $userGoal, format: .number)
+                    TextField("Enter goal weight (lbs)", value: $userWeightGoal, format: .number)
                         .textFieldStyle(.roundedBorder)
                 } header: {
                     Text("What is your goal weight?")
                 }
                 
                 Section {
-                    TextField("Enter steps goal", value: $userGoal, format: .number)
+                    TextField("Enter steps goal", value: $userStepsGoal, format: .number)
                         .textFieldStyle(.roundedBorder)
                 } header: {
                     Text("How many daily steps are you aiming to hit?")
@@ -77,7 +79,14 @@ struct PersonalInfoView: View {
             // Mark : - Save user data + Next screen
             
             Button{
-                healthStore.savingUserWeightAndHeight(userWeight ?? 0, userHeight ?? 0)
+                
+                print("hi")
+                healthStore.savingUserData(userWeight, userHeight)
+                let info = UserGoals(userWeightGoal, userStepsGoal)
+                
+                print(info.weightGoal ?? 0)
+                print(info.stepsGoal ?? 0)
+                context.insert(info)
                 selection += 1
             } label: {
                 CustomLabel(text: "Next")
@@ -90,4 +99,5 @@ struct PersonalInfoView: View {
     let healthStore = HealthStore()
     return PersonalInfoView(selection: .constant(0))
         .environment(healthStore)
+        .modelContainer(for: [Food.self, UserGoals.self])
 }
