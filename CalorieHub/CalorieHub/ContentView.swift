@@ -11,17 +11,18 @@ import HealthKit
 
 struct ContentView: View {
     
+    
     var body: some View {
         TabView {
             DashBoardView()
-            .tabItem {
-                Label("Home", systemImage: "house")
-            }
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
             
             MealsView()
-            .tabItem {
-                Label("Meals", systemImage: "fork.knife")
-            }
+                .tabItem {
+                    Label("Meals", systemImage: "fork.knife")
+                }
             
             PersonalView()
                 .tabItem {
@@ -40,5 +41,5 @@ struct ContentView: View {
         .environment(healthStore)
         .environment(viewModel)
         .modelContainer(DataPreviewController.foodPreviewContainer)
-        .modelContainer(userGoalPreviewContainer)
+        .modelContainer(DataPreviewController.userGoalPreviewContainer)
 }
