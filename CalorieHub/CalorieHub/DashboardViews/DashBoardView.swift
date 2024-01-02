@@ -14,10 +14,9 @@ import SwiftData
 // total goals etc for the day
 struct DashBoardView: View {
     
-    @Query(filter: Food.currentPredicate()) var foods : [Food]
 
     var body: some View {
-        Text(foods.reduce(0, {$0 + (Double($1.calories) ?? 0)}), format: .number)
+        Nutritient_Card()
     }
 }
     

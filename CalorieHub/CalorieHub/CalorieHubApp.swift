@@ -12,7 +12,7 @@ import Observation
 @main
 struct CalorieHubApp: App {
     
-    // Mark : View Model
+    // Mark : View Model for for nutrition logic, user goals 
     @State private var viewModel = ViewModel()
     
     // Mark : Health Store
@@ -27,15 +27,31 @@ struct CalorieHubApp: App {
             ContentView()
                 .environment(healthStore)
                 .environment(viewModel)
-                .modelContainer(for: [Food.self,UserGoals.self])
+                .modelContainer(DataPreviewController.foodPreviewContainer)
+                .modelContainer(DataPreviewController.userGoalPreviewContainer)
                 .fullScreenCover(isPresented: $isOnBoarding) {
                     OnBoarding(isOnboarding: $isOnBoarding)
                         .environment(healthStore) // had to add this here as well to allow environment
-                        .modelContainer(for: [Food.self,UserGoals.self])
+                        .modelContainer(DataPreviewController.foodPreviewContainer)
+                        .modelContainer(DataPreviewController.userGoalPreviewContainer)
                 }
                 
         }
-        
-        
     }
 }
+
+//
+//var body: some Scene {
+//    WindowGroup {
+//        ContentView()
+//            .environment(healthStore)
+//            .environment(viewModel)
+//            .modelContainer(for: [Food.self,UserGoals.self])
+//            .fullScreenCover(isPresented: $isOnBoarding) {
+//                OnBoarding(isOnboarding: $isOnBoarding)
+//                    .environment(healthStore) // had to add this here as well to allow environment
+//                    .modelContainer(for: [Food.self,UserGoals.self])
+//            }
+//            
+//    }
+//}

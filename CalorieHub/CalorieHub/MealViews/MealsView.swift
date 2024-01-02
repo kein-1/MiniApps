@@ -14,9 +14,8 @@ struct MealsView: View {
     @Environment(\.modelContext) private var context
     
 //    var currDate = viewModel.selectedDate
-//    
-    @Query(filter: Food.currentPredicate()) var foods : [Food]
     
+    @Query(filter: Food.currentPredicate()) var foods : [Food]
     
     var body: some View {
         NavigationStack {
@@ -31,7 +30,6 @@ struct MealsView: View {
                         }
                     }
                     .onDelete(perform: deleteFood)
-                    
                 } header: {
                     HStack {
                         Text(mealTime)

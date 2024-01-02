@@ -32,6 +32,7 @@ struct FoodCard: View {
                 .multilineTextAlignment(.center)
         }
         .padding(.bottom, 5)
+        .frame(maxWidth: 100)
     }
 }
 //

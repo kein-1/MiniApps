@@ -12,19 +12,23 @@ import SwiftData
 struct PersonalView: View {
     
     @Environment(\.modelContext) private var context
-    @Query var goals : [UserGoals]
+//    @Query var goals : [UserGoals]
     
     var body: some View {
-        VStack {
-            Text("\(goals.count)")
-            Text("hi")
-            Text("\(goals[0].stepsGoal ?? 123)")
-            Text("\(goals[0].weightGoal ?? 123)")
+        NavigationStack {
+            VStack {
+                
+                //            Text("\(goals.count)")
+                Text("hi")
+                //            Text("\(goals[0].stepsGoal ?? 123)")
+                //            Text("\(goals[0].weightGoal ?? 123)")
+            }
+           
         }
     }
 }
 
 #Preview {
     return PersonalView()
-        .modelContainer(userGoalPreviewContainer)
+        .modelContainer(DataPreviewController.userGoalPreviewContainer)
 }
