@@ -26,3 +26,8 @@ extension Optional where Wrapped == String {
         }
     }
 }
+
+
+extension String : Identifiable {
+    public var id: String {self}
+}

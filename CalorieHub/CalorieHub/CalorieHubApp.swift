@@ -33,6 +33,9 @@ struct CalorieHubApp: App {
                         .environment(healthStore) // had to add this here as well to allow environment
                         .modelContainer(for: [Food.self,UserGoals.self])
                 }
+                
         }
+        
+        
     }
 }

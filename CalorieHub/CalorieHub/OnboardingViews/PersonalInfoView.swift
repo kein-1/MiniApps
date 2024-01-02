@@ -77,15 +77,9 @@ struct PersonalInfoView: View {
             
             
             // Mark : - Save user data + Next screen
-            
             Button{
-                
-                print("hi")
                 healthStore.savingUserData(userWeight, userHeight)
                 let info = UserGoals(userWeightGoal, userStepsGoal)
-                
-                print(info.weightGoal ?? 0)
-                print(info.stepsGoal ?? 0)
                 context.insert(info)
                 selection += 1
             } label: {
