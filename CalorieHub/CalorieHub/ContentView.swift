@@ -8,27 +8,26 @@
 import SwiftUI
 import HealthKit
 
+
 struct ContentView: View {
     
     var body: some View {
         TabView {
-            PrimaryView()
+            DashBoardView()
             .tabItem {
                 Label("Home", systemImage: "house")
             }
             
-            FoodCategoriesView()
-                .tabItem {
-                    Label("Add a Food", systemImage: "plus.app")
-                }
-                
-            Text("view2")
+            MealsView()
+            .tabItem {
+                Label("Meals", systemImage: "fork.knife")
+            }
+            
+            PersonalView()
                 .tabItem {
                     Label("Personal", systemImage: "person")
                 }
-            
         }
-        .padding()
     }
 }
 
@@ -40,5 +39,6 @@ struct ContentView: View {
     return ContentView()
         .environment(healthStore)
         .environment(viewModel)
-        .modelContainer(for: Food.self)
+        .modelContainer(DataPreviewController.foodPreviewContainer)
+        .modelContainer(userGoalPreviewContainer)
 }

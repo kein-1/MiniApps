@@ -63,6 +63,9 @@ class Food {
         "(Optional) Enter Carbs",
         "(Optional) Enter Proteins"
     ]
+    
+    static let foodCategories = ["Breakfast", "Lunch", "Dinner", "Sweets", "Drinks", "Other"]
+
 }
 //
 //

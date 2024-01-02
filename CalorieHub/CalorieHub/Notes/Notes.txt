@@ -32,4 +32,7 @@ HealthKit :
 
 Great writeup for swiftdata and populating containers : https://www.andrewcbancroft.com/blog/ios-development/data-persistence/pre-populate-swiftdata-persistent-store/
 
-My project was crashing a lot 
+Known issues in #PREVIEW:
+1. Populating #Preview with sample swift data :
+    - Solved using an external preview which created a sample model container with data
+    - Can't seem to populate more than 1 Model in a container. My Food model works, but trying to incorporate the UserGoals model crashes in preview

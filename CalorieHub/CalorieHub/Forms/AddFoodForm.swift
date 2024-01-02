@@ -11,7 +11,7 @@ struct AddFoodForm: View {
     
     @Environment(ViewModel.self) private var viewModel
     @Environment(\.modelContext) private var context
-    
+    @Environment(\.dismiss) private var dismiss 
    
     @State private var mealTime = "Breakfast"
     
@@ -44,6 +44,7 @@ struct AddFoodForm: View {
         
         Button {
             addFood()
+            dismiss()
         } label: {
             AddFoodButton()
         }
@@ -51,20 +52,18 @@ struct AddFoodForm: View {
     
     
     func addFood() {
-        
         let name = arr[0] ?? ""
         let calories = arr[1] ?? ""
-        
         let food = Food(name , category, calories, arr[2], arr[3], arr[4], mealTime)
         context.insert(food)
     }
 }
 
-#Preview {
-    var healthStore = HealthStore()
-    var viewModel = ViewModel()
-   
-    return AddFoodForm(category: "Sweets")
-        .environment(healthStore)
-        .environment(viewModel)
-}
+//#Preview {
+//    var healthStore = HealthStore()
+//    var viewModel = ViewModel()
+//   
+//    return AddFoodForm(category: "Sweets")
+//        .environment(healthStore)
+//        .environment(viewModel)
+//}
