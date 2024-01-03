@@ -27,8 +27,8 @@ struct PersonalView: View {
         }
     }
 }
-
-#Preview {
-    return PersonalView()
-        .modelContainer(DataPreviewController.userGoalPreviewContainer)
-}
+//
+//#Preview {
+//    return PersonalView()
+//        .modelContainer(DataPreviewController.userGoalPreviewContainer)
+//}

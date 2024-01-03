@@ -14,17 +14,17 @@ import Observation
 class ViewModel {
     
     var selectedDate = Date()
-    var calories = 0.0
-    var fats = 0.0
-    var proteins = 0.0
-    var carbs = 0.0
+    var totalCalories = 0.0
+    var totalFats = 0.0
+    var totalProteins = 0.0
+    var totalCarbs = 0.0
 
 
     func updateNutrition(_ foods : [Food]){
-        calories = foods.reduce(0, {$0 + (Double($1.calories) ?? 0)})
-        fats = foods.reduce(0, {$0 + (Double($1.fats ?? "") ?? 0)})
-        proteins = foods.reduce(0, {$0 + (Double($1.protein ?? "") ?? 0)})
-        carbs = foods.reduce(0, {$0 + (Double($1.carbohydrate ?? "") ?? 0)})
+        totalCalories = foods.reduce(0, {$0 + (Double($1.calories) ?? 0)})
+        totalFats = foods.reduce(0, {$0 + (Double($1.fats ?? "") ?? 0)})
+        totalProteins = foods.reduce(0, {$0 + (Double($1.protein ?? "") ?? 0)})
+        totalCarbs = foods.reduce(0, {$0 + (Double($1.carbohydrate ?? "") ?? 0)})
     }
 }
 
