@@ -31,15 +31,14 @@ struct ContentView: View {
         }
     }
 }
-
-#Preview {
-    
-    var healthStore = HealthStore()
-    var viewModel = ViewModel()
-    
-    return ContentView()
-        .environment(healthStore)
-        .environment(viewModel)
-        .modelContainer(DataPreviewController.foodPreviewContainer)
-        .modelContainer(DataPreviewController.userGoalPreviewContainer)
-}
+//
+//#Preview {
+//    
+//    var healthStore = HealthStore()
+//    var viewModel = ViewModel()
+//    
+//    return ContentView()
+//        .environment(healthStore)
+//        .environment(viewModel)
+//        .modelContainer(DataPreviewController.foodPreviewContainer)
+//}

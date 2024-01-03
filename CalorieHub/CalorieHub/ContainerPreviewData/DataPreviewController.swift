@@ -13,15 +13,17 @@ import SwiftData
 
 @MainActor
 class DataPreviewController {
-    static let foodPreviewContainer : ModelContainer = {
+    
+    static let mainContainer : ModelContainer = {
         do {
             // This sets configuration allowing data to NOT be saved across instances of app launches. Useful for testing/preview
             // Basically saying for each of the data types, this will be its configuration. We do this for more explicit control
-            let configuration = ModelConfiguration(for: Food.self, isStoredInMemoryOnly: true)
             
-            // ModelConatiner here takes variadic parameter.. so it means it can be 0 or more
-            // No need for array brackets
-            let container = try ModelContainer(for: Food.self, configurations : configuration)
+            let config = ModelConfiguration(for: Food.self, UserGoals.self, isStoredInMemoryOnly: true)
+            
+            // VERY IMPORTANT Note : Make only ONE model config.. i was making separate ones and it crashed my code for the container
+            let container = try ModelContainer(for: Food.self, UserGoals.self, configurations: config)
+            
             
             let sampleData : [Food] = [
                 Food("Chicken Salad", "Salad", "350", "25", "15", "20", "Lunch"),
@@ -46,31 +48,17 @@ class DataPreviewController {
             for data in sampleData {
                 container.mainContext.insert(data)
             }
+            
+            let sampleData2 = UserGoals(2000.5, 15000.5)
+            sampleData2.updateAll(1800, 50, 90, 140)
+            
+            container.mainContext.insert(sampleData2)
+            
             return container
         } catch {
             print("failed to create")
             fatalError("Failed to create container")
         }
     }() // runs the closure and assigns its value to previewContainer
-    
-    static let userGoalPreviewContainer : ModelContainer = {
-        do {
-            
-            // This sets configuration allowing data to NOT be saved across instances of app launches. Useful for testing/preview
-            // Basically saying for each of the data types, this will be its configuration. We do this for more explicit control
-            let configuration = ModelConfiguration(for: UserGoals.self, isStoredInMemoryOnly: true)
-            
-            
-            // ModelConatiner here takes variadic parameter.. so it means it can be 0 or more
-            // No need for array brackets
-            let container = try ModelContainer(for: UserGoals.self, configurations : configuration)
-            
-            let sampleData2 : UserGoals = UserGoals(2000.5, 15000.5)
-            
-            return container
-        } catch {
-            print("failed to create")
-            fatalError("Failed to create container")
-        }
-    }()
 }
+

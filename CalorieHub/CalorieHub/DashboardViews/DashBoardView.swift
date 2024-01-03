@@ -20,8 +20,8 @@ struct DashBoardView: View {
     }
 }
     
-
-#Preview {
-    DashBoardView()
-        .modelContainer(DataPreviewController.foodPreviewContainer)
-}
+//
+//#Preview {
+//    DashBoardView()
+//        .modelContainer(DataPreviewController.foodPreviewContainer)
+//}
