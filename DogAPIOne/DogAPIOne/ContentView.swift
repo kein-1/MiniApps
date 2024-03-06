@@ -5,6 +5,7 @@
 //  Created by Kein Li on 2/11/24.
 //  Created for learning purposes. App should fetch a new fact with each refresh or click of
 //  a button. Practice MVVM, JSON, Networking, Async/Await
+//
 
 import SwiftUI
 
