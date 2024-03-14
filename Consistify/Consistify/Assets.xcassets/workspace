@@ -1,0 +1,13 @@
+
+- specifiy address, port, and some value 
+client connect : ./tcpclient 127.0.0.1 8080 12
+
+- specify only the port
+server connect : ./tcpserver 8080
+
+- run docker :
+docker exec -it 4cf95fac72aa bash
+
+- tar ball :
+
+tar zcvf project3a.tar.gz project3a
