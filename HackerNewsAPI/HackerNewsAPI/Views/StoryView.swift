@@ -20,13 +20,12 @@ struct StoryView: View {
             List {
                 ForEach(storyViewModel.comments[story] ?? [Item](), id: \.self) { comment in
                     Section {
-                        CommentView(comment: comment, storyViewModel: $storyViewModel)
+                        CommentRootView(comment: comment, storyViewModel: $storyViewModel)
                     }
                 }
             }
             .listSectionSpacing(.compact)
         }
-        
         .task {
             await storyViewModel.getComments(for: story)
         }
