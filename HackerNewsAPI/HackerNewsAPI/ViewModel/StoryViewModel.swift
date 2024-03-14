@@ -16,13 +16,10 @@ class StoryViewModel {
     var isFetching = true
         
     
-    
     func getComments(for item: Item) async {
         do {
             let commentItems = try await NetworkManager.shared.fetchAllComments(for: item)
             comments[item] = commentItems
-            print(item.by!, item.id)
-            print(commentItems)
             isFetching = false
         } catch {
             print("error in retrieval")
