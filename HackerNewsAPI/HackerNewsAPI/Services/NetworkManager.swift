@@ -14,14 +14,13 @@ enum NetworkErrors: Error {
 }
 
 
-/// <#Description#>
+/// Singleton Network Manager
 class NetworkManager {
     static var shared = NetworkManager()
     private init() { }
     
     
     // Mark - Methods
-    
     
     /// Fetch as many items concurrently as possible
     /// - Parameter storyType: the type of stories to return
@@ -53,12 +52,11 @@ class NetworkManager {
     
     
     /// Fetch as many items concurrently as possible
-    /// - Parameter story: the type of stories to return
+    /// - Parameter item: the type of item(story/commment)
     /// - Returns: a list of comment items
     func fetchAllComments(for item: Item) async throws -> [Item] {
         
         guard let ids = item.childCommentIDs else {
-            print(item)
             return [Item]()
         }
             

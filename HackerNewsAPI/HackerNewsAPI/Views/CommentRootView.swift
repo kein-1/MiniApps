@@ -24,8 +24,18 @@ struct CommentRootView: View {
     
     var body: some View {
         VStack(alignment:.leading, spacing: 5) {
-            CommentHeadLineView(comment: comment)
-            
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Text("\(comment.by ?? "") | ")
+                        .font(.headline)
+                    Text("\(comment.displayTime)")
+                        .font(.subheadline)
+                        .foregroundStyle(.gray)
+                }
+                Text(comment.content ?? "")
+                    .fontDesign(.rounded)
+                    .font(.subheadline)
+            }
             if showMoreButtonStatus {
                 expandButton
             }
@@ -33,12 +43,15 @@ struct CommentRootView: View {
                 collapseButton
                 ForEach(storyViewModel.comments[comment] ?? [Item](), id: \.self) { comment in
                     CommentView(comment: comment, storyViewModel: storyViewModel)
+                        .padding(.leading,16)
                 }
             }
         }
+        .padding(.bottom, 15)
         .onChange(of: expand) {
             Task {
                 await storyViewModel.getComments(for: comment)
+//                await storyViewModel.getCommentsMock(for: comment)
             }
         }
     }
@@ -50,6 +63,9 @@ struct CommentRootView: View {
             }
         } label: {
             Label("See Comments", systemImage: "chevron.down.circle")
+                .labelStyle(.titleAndIcon)
+                .foregroundStyle(.orange)
+                .font(.subheadline)
         }
     }
     
@@ -60,10 +76,9 @@ struct CommentRootView: View {
             }
         } label: {
             Label("Collapse", systemImage: "chevron.up.circle")
+                .labelStyle(.titleAndIcon)
+                .foregroundStyle(.orange)
+                .font(.subheadline)
         }
     }
 }
-//
-//#Preview {
-//    CommentParentView()
-//}

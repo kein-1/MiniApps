@@ -14,6 +14,13 @@ class HackerNewsViewModel {
     
     var stories = [Item]()
     var isFetching = true
+    var searchableText = ""
+    
+    var filteredStories: [Item] {
+        if searchableText.isEmpty { return stories }
+        
+        return stories.filter{$0.title?.localizedCaseInsensitiveContains(searchableText) ?? false}
+    }
     
     func getStories(for storyType: GetCase) async {
         do {
@@ -23,6 +30,8 @@ class HackerNewsViewModel {
             print("error in retrieval")
         }
     }
+    
+    
     
 }
 
