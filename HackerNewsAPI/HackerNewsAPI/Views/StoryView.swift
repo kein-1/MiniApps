@@ -14,20 +14,26 @@ struct StoryView: View {
     @State var item = Item.mockComment()
     
     var body: some View {
-        VStack {
-            StoryListView(story: story)
+        ScrollView {
+            Section {
+                StoryListView(story: story)
+            }
             
-            List {
+            Divider()
+            
+            LazyVStack(alignment: .leading) {
                 ForEach(storyViewModel.comments[story] ?? [Item](), id: \.self) { comment in
-                    Section {
-                        CommentRootView(comment: comment, storyViewModel: $storyViewModel)
-                    }
+                    CommentRootView(comment: comment, storyViewModel: $storyViewModel)
                 }
             }
-            .listSectionSpacing(.compact)
+            .padding()
         }
+        .padding()
+        .navigationBarTitleDisplayMode(.inline)
         .task {
             await storyViewModel.getComments(for: story)
+//            storyViewModel.buildMockData()
+//            await storyViewModel.getCommentsMock(for: story)
         }
     }
 }

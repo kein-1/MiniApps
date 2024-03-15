@@ -17,13 +17,17 @@ struct HomeView: View {
             if hackerNewsVM.isFetching {
                 Progress()
             } else {
-                List(hackerNewsVM.stories, id: \.self) { story in
-                    NavigationLink {
-                        StoryView(story: story)
-                    } label: {
-                        StoryListView(story: story)
+                List {
+                    ForEach(hackerNewsVM.filteredStories, id: \.self) { story in
+                        NavigationLink {
+                            StoryView(story: story)
+                        } label: {
+                            StoryListView(story: story)
+                        }
                     }
                 }
+                .searchable(text: $hackerNewsVM.searchableText)
+                .listStyle(.plain)
                 .navigationTitle("Today's Best Stories")
             }
         }
@@ -33,6 +37,7 @@ struct HomeView: View {
         .refreshable {
             await hackerNewsVM.getStories(for: GetCase.bestStories)
         }
+        
     }
 }
 

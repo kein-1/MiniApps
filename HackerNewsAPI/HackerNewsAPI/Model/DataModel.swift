@@ -64,7 +64,6 @@ struct Item: Codable, Hashable {
     
     
     
-    
     // Used to map JSON keys to custom swift names
     enum CodingKeys: String, CodingKey {
         case id
@@ -101,6 +100,7 @@ struct Item: Codable, Hashable {
         
         self.score = try container.decodeIfPresent(Int.self, forKey: .score)
         self.title = try container.decodeIfPresent(String.self, forKey: .title)
+        
         self.parts = try container.decodeIfPresent([Int].self, forKey: .parts)
         self.commentCount = try container.decodeIfPresent(Int.self, forKey: .commentCount)
         
@@ -114,7 +114,7 @@ struct Item: Codable, Hashable {
     }
     
     // Item initializer
-    init(id: Int, deleted: Bool? = nil, type: String, by: String? = nil, dead: Bool? = nil, parent: Int? = nil, poll: Int? = nil, url: String? = nil, score: Int? = nil, title: String? = nil, parts: [Int]? = nil, commentCount: Int? = nil, creationTime: Double, childCommentIDs: [Int]? = nil, content: String? = nil) {
+    init(id: Int, deleted: Bool? = nil, type: String, by: String? = nil, dead: Bool? = nil, parent: Int? = nil, poll: Int? = nil, url: String? = nil, score: Int? = nil, title: String? = nil , parts: [Int]? = nil, commentCount: Int? = nil, creationTime: Double, childCommentIDs: [Int]? = nil, content: String? = nil) {
             self.id = id
             self.deleted = deleted
             self.type = type
@@ -173,10 +173,10 @@ enum GetCase: String {
 extension Item {
     static func mockStory() -> Item {
         
-        let item = Item(id: 2921983,
+        let item = Item(id: 0,
                         deleted: nil,
                         type: "story",
-                        by: "dhouston",
+                        by: "test",
                         dead: nil,
                         parent: nil,
                         poll: nil,
@@ -186,14 +186,14 @@ extension Item {
                         parts: nil,
                         commentCount: 71,
                         creationTime: 1175714200,
-                        childCommentIDs: [2922097, 2922429, 2924562, 2922709, 2922573, 2922140, 2922141],
+                        childCommentIDs: [1,2],
                         content: nil)
         return item
 
     }
     
     static func mockComment() -> Item {
-        let item = Item(id: 2921983,
+        let item = Item(id: 123,
                         deleted: nil,
                         type: "comment",
                         by: "norvig",
@@ -206,7 +206,7 @@ extension Item {
                         parts: nil,
                         commentCount: nil,
                         creationTime:  1314211127,
-                        childCommentIDs: [2922097, 2922429, 2924562, 2922709, 2922573, 2922140, 2922141],
+                        childCommentIDs: [],
                         content: "Aw shucks, guys ... you make me blush with your compliments.<p>Tell you what, Ill make a deal: I'll keep writing if you keep reading. K?")
         return item
     }

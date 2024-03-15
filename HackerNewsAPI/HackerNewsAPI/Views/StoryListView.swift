@@ -29,22 +29,41 @@ struct StoryListView: View {
             .foregroundStyle(.gray)
             
             
-            HStack() {
+            HStack {
                 Label(String(story.score ?? 0) , systemImage: "arrowshape.up")
-                    .foregroundStyle(.cyan)
-                    .labelStyle(.titleAndIcon)
-                Label(String(story.commentCount ?? 0) , systemImage: "text.bubble.rtl")
+                    .customLabelModifier()
                     .foregroundStyle(.orange)
-                    .labelStyle(.titleAndIcon)
+                Label(String(story.commentCount ?? 0) , systemImage: "text.bubble.rtl")
+                    .customLabelModifier()
+                    .foregroundStyle(.cyan)
             }
+            .padding(.top, 10)
             .font(.caption.bold())
         }
     }
 }
-//
-//#Preview {
-//    StoryListView(story: Item.mockStory())
-//}
-//
-//
-//
+
+
+// Mark: Custom View Modifier
+
+struct CustomLabelModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .labelStyle(.titleAndIcon)
+            .padding([.top,.bottom], 5)
+            .padding([.horizontal], 15)
+            .background {
+                Capsule(style: .continuous)
+                    .fill(.clear)
+                    .strokeBorder(lineWidth: 1)
+            }
+    }
+}
+
+extension View {
+    func customLabelModifier() -> some View {
+        self.modifier(CustomLabelModifier())
+    }
+}
+
+
