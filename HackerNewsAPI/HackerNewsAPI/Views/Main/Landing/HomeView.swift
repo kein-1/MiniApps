@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @State var hackerNewsVM = HackerNewsViewModel()
-    
+    @State var userVM = UserFavoritesViewModel()
     
     var body: some View {
         NavigationStack {
@@ -31,6 +31,11 @@ struct HomeView: View {
                 .navigationTitle("Today's Best Stories")
                 .overlay(alignment: .bottomTrailing) {
                     FilteredButtonGroup()
+                }
+                .toolbar {
+                    NavigationLink("Favorites") {
+                        UserFavorites()
+                    }
                 }
             }
         }

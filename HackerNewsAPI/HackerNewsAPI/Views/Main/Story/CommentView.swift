@@ -35,7 +35,7 @@ struct CommentView: View {
                     }
                     .padding(.bottom, 10)
                     
-                    Text(comment.content ?? "")
+                    Text(comment.content?.htmlToString() ?? "")
                         .fontDesign(.rounded)
                         .font(.subheadline)
                     
