@@ -20,7 +20,7 @@ class NetworkManager {
     private init() { }
     
     
-    // Mark - Methods
+    // MARK: API call methods
     
     /// Fetch as many items concurrently as possible
     /// - Parameter storyType: the type of stories to return

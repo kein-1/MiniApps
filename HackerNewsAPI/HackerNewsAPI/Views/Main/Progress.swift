@@ -16,7 +16,3 @@ struct Progress: View {
         }
     }
 }
-//
-//#Preview {
-//    ProgressView()
-//}

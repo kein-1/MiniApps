@@ -32,8 +32,6 @@ struct StoryView: View {
         .navigationBarTitleDisplayMode(.inline)
         .task {
             await storyViewModel.getComments(for: story)
-//            storyViewModel.buildMockData()
-//            await storyViewModel.getCommentsMock(for: story)
         }
     }
 }

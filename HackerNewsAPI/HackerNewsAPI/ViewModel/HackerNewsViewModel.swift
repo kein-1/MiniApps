@@ -24,17 +24,12 @@ class HackerNewsViewModel {
     
     func getStories(for storyType: GetCase) async {
         do {
-            var fetchedStories = try await NetworkManager.shared.fetchAllStories(for: storyType)
-            
+            let fetchedStories = try await NetworkManager.shared.fetchAllStories(for: storyType)
             stories = fetchedStories.sorted(by: {$0.score ?? 0 > $1.score ?? 0 })
-            
             isFetching = false
         } catch {
             print("error in retrieval")
         }
     }
-    
-    
-    
 }
 

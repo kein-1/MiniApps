@@ -23,7 +23,3 @@ struct FilteredButtonGroup: View {
     }
     
 }
-//
-//#Preview {
-//    FilteredButtonGroup()
-//}
