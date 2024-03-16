@@ -50,7 +50,6 @@ struct CommentRootView: View {
         .onChange(of: expand) {
             Task {
                 await storyViewModel.getComments(for: comment)
-//                await storyViewModel.getCommentsMock(for: comment)
             }
         }
     }

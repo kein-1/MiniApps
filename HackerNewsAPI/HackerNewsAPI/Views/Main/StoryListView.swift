@@ -44,7 +44,7 @@ struct StoryListView: View {
 }
 
 
-// Mark: Custom View Modifier
+// MARK: - Custom View Modifiers
 
 struct CustomLabelModifier: ViewModifier {
     func body(content: Content) -> some View {

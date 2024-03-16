@@ -24,6 +24,7 @@ struct FloatingFilterButton: View {
     }
 }
 
+// MARK: - Conditional Modifiers
 
 /// Used to apply conditional label style
 struct ConditionalModifier : ViewModifier {
@@ -53,8 +54,3 @@ struct ConditionalModifier : ViewModifier {
     }
 }
 
-
-
-//#Preview {
-//    FloatingFilterButton()
-//}
