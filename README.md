@@ -2,6 +2,17 @@
 
 
 
+### HackerNews API App
+
+- An app for browsing the best stories from HackerNews 
+- Utilized Swift MVVM, Concurrency/Structured Concurrency, Networking, JSON Decoder/Encoder, UserDefaults(for saving stories), [HackerNewsAPI](https://github.com/HackerNews/API?tab=readme-ov-file)
+
+
+
+<img src="HackerNewsAPI/HackerNewsAPI/Screenshots/SS1.png" alt="Sample Image" height="500"> <img src="HackerNewsAPI/HackerNewsAPI/Screenshots/SS2.png" alt="Sample Image" height="500"> <img src="HackerNewsAPI/HackerNewsAPI/Screenshots/GIF1.gif" height="500"/>
+
+
+
 ### Dog Facts App
 
 - Dog facts API using Dog API by Kindruff
