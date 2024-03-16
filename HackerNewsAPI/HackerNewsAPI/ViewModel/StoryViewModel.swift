@@ -28,7 +28,31 @@ class StoryViewModel {
             print("error in retrieval")
         }
     }
+    
+    
+    /// Saves item to user default
+    /// - Parameter item: The story to save
+    func saveItem(for item: Item) {
+        let key = "favorite-stories"
+        
+        if let savedItems = UserDefaults.standard.data(forKey: key) {
+            if var decodedSaveItems = try? JSONDecoder().decode([Item].self, from: savedItems) {
+                decodedSaveItems.append(item)
+                
+                if let encodedItem = try? JSONEncoder().encode(decodedSaveItems) {
+                    UserDefaults.standard.setValue(encodedItem, forKey: key)
+                }
+            }
+        } else {
+            // No key set yet/empty
+            if let encodedItem = try? JSONEncoder().encode([item]) {
+                UserDefaults.standard.setValue(encodedItem, forKey: key)
+            }
+        }
+    }
 }
+
+
 
 // MARK: - Mock Data and Functions
 extension StoryViewModel {
@@ -115,4 +139,7 @@ extension StoryViewModel {
         comments[item] = commentItems
         isFetching = false
     }
+    
+    
+   
 }

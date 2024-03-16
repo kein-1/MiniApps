@@ -31,7 +31,7 @@ struct CommentRootView: View {
                     .font(.subheadline)
                     .foregroundStyle(.gray)
             }
-            Text(comment.content ?? "")
+            Text(comment.content?.htmlToString() ?? "")
                 .fontDesign(.rounded)
                 .font(.subheadline)
             

@@ -16,7 +16,9 @@ enum NetworkErrors: Error {
 
 /// Singleton Network Manager
 class NetworkManager {
+    
     static var shared = NetworkManager()
+    
     private init() { }
     
     
