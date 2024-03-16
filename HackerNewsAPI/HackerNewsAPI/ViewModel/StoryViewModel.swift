@@ -17,9 +17,7 @@ class StoryViewModel {
     
     func getComments(for item: Item) async {
         do {
-            print(item)
             var commentItems = try await NetworkManager.shared.fetchAllComments(for: item)
-            
             commentItems = commentItems.filter { item in
                 guard let status = item.deleted else { return true }
                 return status == false

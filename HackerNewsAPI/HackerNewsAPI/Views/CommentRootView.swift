@@ -23,19 +23,18 @@ struct CommentRootView: View {
     }
     
     var body: some View {
-        VStack(alignment:.leading, spacing: 5) {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack {
-                    Text("\(comment.by ?? "") | ")
-                        .font(.headline)
-                    Text("\(comment.displayTime)")
-                        .font(.subheadline)
-                        .foregroundStyle(.gray)
-                }
-                Text(comment.content ?? "")
-                    .fontDesign(.rounded)
+        LazyVStack(alignment:.leading, spacing: 5) {
+            HStack {
+                Text("\(comment.by ?? "") | ")
+                    .font(.headline)
+                Text("\(comment.displayTime)")
                     .font(.subheadline)
+                    .foregroundStyle(.gray)
             }
+            Text(comment.content ?? "")
+                .fontDesign(.rounded)
+                .font(.subheadline)
+            
             if showMoreButtonStatus {
                 expandButton
             }
