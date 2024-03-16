@@ -20,27 +20,24 @@ struct CommentView: View {
     }
     
     var body: some View {
-        
-        VStack {
             HStack {
                 Divider()
                     .frame(width: 3)
                     .overlay(.orange)
                 
-                VStack(alignment:.leading, spacing: 5) {
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        HStack {
-                            Text("\(comment.by ?? "") | ")
-                                .font(.headline)
-                            Text("\(comment.displayTime)")
-                                .font(.subheadline)
-                                .foregroundStyle(.gray)
-                        }
-                        Text(comment.content ?? "")
-                            .fontDesign(.rounded)
+                LazyVStack(alignment:.leading, spacing: 5) {
+                    HStack {
+                        Text("\(comment.by ?? "") | ")
+                            .font(.headline)
+                        Text("\(comment.displayTime)")
                             .font(.subheadline)
+                            .foregroundStyle(.gray)
                     }
+                    .padding(.bottom, 10)
+                    
+                    Text(comment.content ?? "")
+                        .fontDesign(.rounded)
+                        .font(.subheadline)
                     
                     if moreComments {
                         ForEach(storyViewModel.comments[comment] ?? [Item](), id: \.self) { comment in
@@ -51,13 +48,11 @@ struct CommentView: View {
                 }
             }
             .fixedSize(horizontal: false, vertical: true)
-        }
-        .padding([.top,.bottom], 10)
-        .task {
-            if moreComments {
-                await storyViewModel.getComments(for: comment)
-//                await storyViewModel.getCommentsMock(for: comment)
-            }
+            .padding([.top,.bottom], 10)
+            .task {
+                if moreComments {
+                    await storyViewModel.getComments(for: comment)
+                }
         }
     }
 }

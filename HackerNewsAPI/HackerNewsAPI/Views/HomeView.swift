@@ -29,6 +29,9 @@ struct HomeView: View {
                 .searchable(text: $hackerNewsVM.searchableText)
                 .listStyle(.plain)
                 .navigationTitle("Today's Best Stories")
+                .overlay(alignment: .bottomTrailing) {
+                    FilteredButtonGroup()
+                }
             }
         }
         .task {
