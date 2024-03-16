@@ -14,50 +14,58 @@ import SwiftUI
 struct CommentRootView: View {
     
     let comment: Item
-    @Binding var storyViewModel: StoryViewModel
-    @State var expand = false
+    var level: Int = 0
     
-    
-    var showMoreButtonStatus: Bool {
-        comment.childCommentCount > 0 && expand == false
-    }
+    @State var commentViewModel = CommentViewModel()
     
     var body: some View {
-        LazyVStack(alignment:.leading, spacing: 5) {
-            HStack {
-                Text("\(comment.by ?? "") | ")
-                    .font(.headline)
-                Text("\(comment.displayTime)")
-                    .font(.subheadline)
-                    .foregroundStyle(.gray)
+        HStack {
+            if level != 0 {
+                Divider()
+                    .frame(width: 3)
+                    .overlay(.orange)
+                    .padding(.trailing, 10)
             }
-            Text(comment.content?.htmlToString() ?? "")
-                .fontDesign(.rounded)
-                .font(.subheadline)
             
-            if showMoreButtonStatus {
-                expandButton
-            }
-            if expand {
-                collapseButton
-                ForEach(storyViewModel.comments[comment] ?? [Item](), id: \.self) { comment in
-                    CommentView(comment: comment, storyViewModel: storyViewModel)
-                        .padding(.leading,16)
+            LazyVStack(alignment:.leading, spacing: 5) {
+                HStack {
+                    Text("\(comment.by ?? "") | ")
+                        .font(.headline)
+                    Text("\(comment.displayTime)")
+                        .font(.subheadline)
+                        .foregroundStyle(.gray)
+                }
+                .padding(.bottom, 10)
+                
+                Text(comment.content?.htmlToString() ?? "")
+                    .fontDesign(.rounded)
+                    .font(.subheadline)
+                
+                if comment.childCommentCount > 0 && !commentViewModel.expand {
+                    expandButton
+                }
+                
+                if commentViewModel.expand {
+                    collapseButton
+                    ForEach(commentViewModel.comments[comment] ?? [Item](), id: \.self) { comment in
+                        CommentRootView(comment: comment, level: self.level + 1)
+                            .padding(.leading,10)
+                    }
                 }
             }
         }
-        .padding(.bottom, 15)
-        .onChange(of: expand) {
-            Task {
-                await storyViewModel.getComments(for: comment)
-            }
-        }
+        .fixedSize(horizontal: false, vertical: true)
+        .padding([.top,.bottom], 10)
     }
+    
     
     var expandButton: some View {
         Button {
             withAnimation {
-                expand.toggle()
+                commentViewModel.expand = true
+                Task {
+                    await commentViewModel.getComments(for: comment)
+                }
             }
         } label: {
             Label("See Comments", systemImage: "chevron.down.circle")
@@ -70,7 +78,7 @@ struct CommentRootView: View {
     var collapseButton: some View {
         Button {
             withAnimation {
-                expand.toggle()
+                commentViewModel.expand = false
             }
         } label: {
             Label("Collapse", systemImage: "chevron.up.circle")

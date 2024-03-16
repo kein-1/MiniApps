@@ -51,7 +51,7 @@ struct CommentView: View {
             .padding([.top,.bottom], 10)
             .task {
                 if moreComments {
-                    await storyViewModel.getComments(for: comment)
+//                    await storyViewModel.getComments(for: comment)
                 }
         }
     }

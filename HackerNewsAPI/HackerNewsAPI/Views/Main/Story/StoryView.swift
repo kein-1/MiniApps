@@ -26,7 +26,7 @@ struct StoryView: View {
                 
                 LazyVStack(alignment: .leading) {
                     ForEach(storyViewModel.comments[story] ?? [Item](), id: \.self) { comment in
-                        CommentRootView(comment: comment, storyViewModel: $storyViewModel)
+                        CommentRootView(comment: comment)
                     }
                 }
                 .padding()
@@ -41,6 +41,6 @@ struct StoryView: View {
     }
 }
 
-//#Preview {
-//    StoryView(story: Item.mockStory())
-//}
+#Preview {
+    StoryView(story: Item.mockStory())
+}
