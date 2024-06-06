@@ -7,8 +7,7 @@ export const typeDefs = `#graphql
     type Query {
 		owners: [Owner]
 		pets: [Pet]
-
-    }	
+	}	
 
 	type Owner {
 		id: ID!
@@ -21,6 +20,6 @@ export const typeDefs = `#graphql
         id: ID!
         name: String!
         breed: String!
+		ownerId: ID!
     }
-	
 `

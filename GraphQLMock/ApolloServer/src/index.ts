@@ -1,8 +1,25 @@
 import { ApolloServer } from '@apollo/server'
 import { startStandaloneServer } from '@apollo/server/standalone'
+import { typeDefs } from './schema.js'
+import data from './mockDb.js'
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
+
+const resolvers = {
+    Query: {
+        owners() {
+            return data.owners
+        },
+
+        pets() {
+            return data.pets
+        }
+
+        // pets(parent, )
+    }
+}
+
 const server = new ApolloServer({
     typeDefs,
     resolvers
