@@ -23,7 +23,7 @@ DogAPIOne/
 **/.vscode
 **/dist
 **.package-lock.json
-**.db
+*.db
 **.DS_Store
 
 
