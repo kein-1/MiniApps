@@ -12,7 +12,20 @@ import Observation
 class ExpenseViewModel {
     let expenseRepo: ExpenseRepository
     var expenses = [Expense]()
+    
+    
+    
     init(expenseRepo: ExpenseRepository) {
         self.expenseRepo = expenseRepo
+    }
+    
+    
+    func fetchAllExpenses() async {
+        do {
+            self.expenses = try expenseRepo.getAll()
+        } catch {
+            print("error fetch: ", error)
+        }
+        
     }
 }

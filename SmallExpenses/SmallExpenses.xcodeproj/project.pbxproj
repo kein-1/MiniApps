@@ -14,12 +14,13 @@
 		8C0C272B2C1269F700753F74 /* SmallExpensesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C272A2C1269F700753F74 /* SmallExpensesUITests.swift */; };
 		8C0C272D2C1269F700753F74 /* SmallExpensesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C272C2C1269F700753F74 /* SmallExpensesUITestsLaunchTests.swift */; };
 		8C0C273B2C126C8A00753F74 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 8C0C273A2C126C8A00753F74 /* GRDB */; };
-		8C0C273F2C126E9800753F74 /* mockDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 8C0C273E2C126E9800753F74 /* mockDB.db */; };
 		8C0C274C2C12AF2900753F74 /* ExpenseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C274B2C12AF2900753F74 /* ExpenseRepository.swift */; };
 		8C0C274E2C12AF6700753F74 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C274D2C12AF6700753F74 /* Expense.swift */; };
-		8C0C27542C12D09B00753F74 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C27532C12D09B00753F74 /* DBHelper.swift */; };
 		8C0C27562C14E3EF00753F74 /* SmallExpensesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C27552C14E3EE00753F74 /* SmallExpensesApp.swift */; };
 		8C0C27582C14E40800753F74 /* ExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C27572C14E40800753F74 /* ExpenseViewModel.swift */; };
+		8C0C275E2C16659E00753F74 /* ExpenseInsertionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C275D2C16659E00753F74 /* ExpenseInsertionView.swift */; };
+		8C0C27642C169D6200753F74 /* ConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C27632C169D6200753F74 /* ConnectionError.swift */; };
+		8C0C27662C16B29800753F74 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C27652C16B29800753F74 /* ExpenseCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,12 +50,13 @@
 		8C0C27262C1269F700753F74 /* SmallExpensesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmallExpensesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C0C272A2C1269F700753F74 /* SmallExpensesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallExpensesUITests.swift; sourceTree = "<group>"; };
 		8C0C272C2C1269F700753F74 /* SmallExpensesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallExpensesUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		8C0C273E2C126E9800753F74 /* mockDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = mockDB.db; sourceTree = "<group>"; };
 		8C0C274B2C12AF2900753F74 /* ExpenseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseRepository.swift; sourceTree = "<group>"; };
 		8C0C274D2C12AF6700753F74 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
-		8C0C27532C12D09B00753F74 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		8C0C27552C14E3EE00753F74 /* SmallExpensesApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallExpensesApp.swift; sourceTree = "<group>"; };
 		8C0C27572C14E40800753F74 /* ExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewModel.swift; sourceTree = "<group>"; };
+		8C0C275D2C16659E00753F74 /* ExpenseInsertionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseInsertionView.swift; sourceTree = "<group>"; };
+		8C0C27632C169D6200753F74 /* ConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionError.swift; sourceTree = "<group>"; };
+		8C0C27652C16B29800753F74 /* ExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,15 +108,13 @@
 		8C0C270E2C1269F400753F74 /* SmallExpenses */ = {
 			isa = PBXGroup;
 			children = (
-				8C0C27402C126F4A00753F74 /* Data */,
-				8C0C27112C1269F400753F74 /* ContentView.swift */,
+				8C0C27622C169B8200753F74 /* View */,
+				8C0C27612C169B7B00753F74 /* ViewModel */,
+				8C0C27602C169B7500753F74 /* DB */,
+				8C0C275F2C169B6E00753F74 /* Model */,
 				8C0C27132C1269F700753F74 /* Assets.xcassets */,
 				8C0C27152C1269F700753F74 /* Preview Content */,
-				8C0C274B2C12AF2900753F74 /* ExpenseRepository.swift */,
-				8C0C274D2C12AF6700753F74 /* Expense.swift */,
-				8C0C27532C12D09B00753F74 /* DBHelper.swift */,
 				8C0C27552C14E3EE00753F74 /* SmallExpensesApp.swift */,
-				8C0C27572C14E40800753F74 /* ExpenseViewModel.swift */,
 			);
 			path = SmallExpenses;
 			sourceTree = "<group>";
@@ -144,12 +144,39 @@
 			path = SmallExpensesUITests;
 			sourceTree = "<group>";
 		};
-		8C0C27402C126F4A00753F74 /* Data */ = {
+		8C0C275F2C169B6E00753F74 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8C0C273E2C126E9800753F74 /* mockDB.db */,
+				8C0C274D2C12AF6700753F74 /* Expense.swift */,
 			);
-			path = Data;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8C0C27602C169B7500753F74 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				8C0C27572C14E40800753F74 /* ExpenseViewModel.swift */,
+				8C0C27632C169D6200753F74 /* ConnectionError.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		8C0C27612C169B7B00753F74 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8C0C274B2C12AF2900753F74 /* ExpenseRepository.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8C0C27622C169B8200753F74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8C0C275D2C16659E00753F74 /* ExpenseInsertionView.swift */,
+				8C0C27112C1269F400753F74 /* ContentView.swift */,
+				8C0C27652C16B29800753F74 /* ExpenseCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +291,6 @@
 			files = (
 				8C0C27172C1269F700753F74 /* Preview Assets.xcassets in Resources */,
 				8C0C27142C1269F700753F74 /* Assets.xcassets in Resources */,
-				8C0C273F2C126E9800753F74 /* mockDB.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,11 +316,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C0C274E2C12AF6700753F74 /* Expense.swift in Sources */,
+				8C0C27642C169D6200753F74 /* ConnectionError.swift in Sources */,
 				8C0C27582C14E40800753F74 /* ExpenseViewModel.swift in Sources */,
 				8C0C27122C1269F400753F74 /* ContentView.swift in Sources */,
 				8C0C27562C14E3EF00753F74 /* SmallExpensesApp.swift in Sources */,
 				8C0C274C2C12AF2900753F74 /* ExpenseRepository.swift in Sources */,
-				8C0C27542C12D09B00753F74 /* DBHelper.swift in Sources */,
+				8C0C27662C16B29800753F74 /* ExpenseCell.swift in Sources */,
+				8C0C275E2C16659E00753F74 /* ExpenseInsertionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
