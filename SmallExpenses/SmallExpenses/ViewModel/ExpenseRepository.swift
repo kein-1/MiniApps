@@ -40,14 +40,10 @@ class LocalRepository: ExpenseRepository {
     }
     
     func openDB() throws {
-        do {
-            let documentURL = URL.documentsDirectory
-            let finalDBUrl = documentURL.appending(path: "expenseDB.db", directoryHint: .checkFileSystem)
-            dbQueue = try DatabaseQueue(path: finalDBUrl.path)
-            print("database connection is established and db initialized at : \(finalDBUrl.path)")
-        } catch {
-            print("error in connection: ", error )
-        }
+        let documentURL = URL.documentsDirectory
+        let finalDBUrl = documentURL.appending(path: "expenseDB.db", directoryHint: .checkFileSystem)
+        dbQueue = try DatabaseQueue(path: finalDBUrl.path)
+        print("database connection is established and db initialized at : \(finalDBUrl.path)")
     }
     
     
@@ -55,17 +51,14 @@ class LocalRepository: ExpenseRepository {
         guard let dbQueue else {
             throw ConnectionError.notOpened
         }
-        do {
-            try dbQueue.write { db in
-                try db.create(table: "expense", options: .ifNotExists) { table in
-                   table.autoIncrementedPrimaryKey("id")
-                   table.column("name", .text).notNull()
-                   table.column("amount", .double).notNull()
-                   table.column("date", .datetime).notNull()
-               }
-            }
-        } catch {
-            print("error in creating schema: ", error )
+        
+        try dbQueue.write { db in
+            try db.create(table: "expense", options: .ifNotExists) { table in
+               table.autoIncrementedPrimaryKey("id")
+               table.column("name", .text).notNull()
+               table.column("amount", .double).notNull()
+               table.column("date", .datetime).notNull()
+           }
         }
     }
     
@@ -74,14 +67,9 @@ class LocalRepository: ExpenseRepository {
             throw ConnectionError.notOpened
         }
         
-        do {
-            return try dbQueue.read { db in
-                let expenses = try Expense.fetchAll(db)
-                return expenses
-            }
-        } catch {
-            print("error in retrieving all: ", error )
-            throw error
+        return try dbQueue.read { db in
+            let expenses = try Expense.fetchAll(db)
+            return expenses
         }
     }
     
@@ -106,13 +94,8 @@ class LocalRepository: ExpenseRepository {
             throw ConnectionError.notOpened
         }
         
-        do {
-            try dbQueue.write { db in
-                try expense.insert(db)
-            }
-        } catch {
-            print("error in insertion: ", error)
-            throw error
+        try dbQueue.write { db in
+            try expense.insert(db)
         }
     }
     
@@ -136,16 +119,11 @@ class LocalRepository: ExpenseRepository {
             return
         }
         
-        do {
-            try dbQueue.write { db in
-                var expense_ = try Expense.find(db, key: id)
-                expense_.name = expense.name
-                expense_.amount = expense.amount
-                try expense_.update(db)
-            }
-        } catch {
-            print("error in updating")
-            throw error
+        try dbQueue.write { db in
+            var expense_ = try Expense.find(db, key: id)
+            expense_.name = expense.name
+            expense_.amount = expense.amount
+            try expense_.update(db)
         }
     }
     
