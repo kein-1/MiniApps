@@ -25,7 +25,7 @@ struct ExpenseInsertionView: View {
             }
             Button {
                 let expense = Expense(name: name, amount: amount, date: Date.now)
-                try? vm.expenseRepo.add(for: expense)
+                vm.addExpense(expense: expense)
                 Task {
                     await vm.fetchAllExpenses()
                 }

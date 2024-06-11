@@ -81,8 +81,8 @@ class LocalRepository: ExpenseRepository {
             }
         } catch {
             print("error in retrieving all: ", error )
+            throw error
         }
-        return [Expense]()
     }
     
     func getOne(id: Int) throws -> Expense {
@@ -112,6 +112,7 @@ class LocalRepository: ExpenseRepository {
             }
         } catch {
             print("error in insertion: ", error)
+            throw error
         }
     }
     
@@ -129,6 +130,22 @@ class LocalRepository: ExpenseRepository {
     func update(for expense: Expense) throws {
         guard let dbQueue else {
             throw ConnectionError.notOpened
+        }
+        
+        guard let id = expense.id else {
+            return
+        }
+        
+        do {
+            try dbQueue.write { db in
+                var expense_ = try Expense.find(db, key: id)
+                expense_.name = expense.name
+                expense_.amount = expense.amount
+                try expense_.update(db)
+            }
+        } catch {
+            print("error in updating")
+            throw error
         }
     }
     

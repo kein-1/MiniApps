@@ -16,12 +16,21 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(vm.expenses, id: \.self) { expense in
-                    ExpenseCell(vm: vm, expense: expense)
+                ForEach($vm.expenses, id: \.self) { $expense in
+                    NavigationLink {
+                        ExpenseUpdateView(vm: vm, expense: $expense)
+                    } label: {
+                        ExpenseCell(vm: vm, expense: expense)
+                    }
                     
+
                 }
+                
             }
             .navigationTitle("Expenses")
+//            .navigationDestination(for: Expense.self) { expense in
+//                ExpenseUpdateView(expense: expense)
+//            }
             .toolbar {
                 ToolbarItem(placement: .automatic) {
                     Button {

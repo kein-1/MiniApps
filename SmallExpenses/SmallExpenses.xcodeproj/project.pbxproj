@@ -21,6 +21,7 @@
 		8C0C275E2C16659E00753F74 /* ExpenseInsertionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C275D2C16659E00753F74 /* ExpenseInsertionView.swift */; };
 		8C0C27642C169D6200753F74 /* ConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C27632C169D6200753F74 /* ConnectionError.swift */; };
 		8C0C27662C16B29800753F74 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C27652C16B29800753F74 /* ExpenseCell.swift */; };
+		8C0C27682C17E12E00753F74 /* ExpenseUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C27672C17E12E00753F74 /* ExpenseUpdateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		8C0C275D2C16659E00753F74 /* ExpenseInsertionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseInsertionView.swift; sourceTree = "<group>"; };
 		8C0C27632C169D6200753F74 /* ConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionError.swift; sourceTree = "<group>"; };
 		8C0C27652C16B29800753F74 /* ExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
+		8C0C27672C17E12E00753F74 /* ExpenseUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseUpdateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				8C0C275D2C16659E00753F74 /* ExpenseInsertionView.swift */,
 				8C0C27112C1269F400753F74 /* ContentView.swift */,
 				8C0C27652C16B29800753F74 /* ExpenseCell.swift */,
+				8C0C27672C17E12E00753F74 /* ExpenseUpdateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				8C0C27642C169D6200753F74 /* ConnectionError.swift in Sources */,
 				8C0C27582C14E40800753F74 /* ExpenseViewModel.swift in Sources */,
 				8C0C27122C1269F400753F74 /* ContentView.swift in Sources */,
+				8C0C27682C17E12E00753F74 /* ExpenseUpdateView.swift in Sources */,
 				8C0C27562C14E3EF00753F74 /* SmallExpensesApp.swift in Sources */,
 				8C0C274C2C12AF2900753F74 /* ExpenseRepository.swift in Sources */,
 				8C0C27662C16B29800753F74 /* ExpenseCell.swift in Sources */,

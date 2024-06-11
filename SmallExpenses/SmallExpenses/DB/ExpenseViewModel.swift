@@ -14,11 +14,9 @@ class ExpenseViewModel {
     var expenses = [Expense]()
     
     
-    
     init(expenseRepo: ExpenseRepository) {
         self.expenseRepo = expenseRepo
     }
-    
     
     func fetchAllExpenses() async {
         do {
@@ -26,6 +24,22 @@ class ExpenseViewModel {
         } catch {
             print("error fetch: ", error)
         }
-        
     }
+    
+    func addExpense(expense: Expense) {
+        do {
+            try expenseRepo.add(for: expense)
+        } catch {
+            print("error in adding: ", error)
+        }
+    }
+    
+    func updateExpense(expense: Expense) {
+        do {
+            try expenseRepo.update(for: expense)
+        } catch {
+            print("error in updating: ", error)
+        }
+    }
+    
 }
