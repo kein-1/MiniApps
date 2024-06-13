@@ -77,14 +77,6 @@ class LocalRepository: ExpenseRepository {
         guard let dbQueue else {
             throw ConnectionError.notOpened
         }
-        //        do {
-        //            let query  = try dbQueue.read { db in
-        //                Expense.fetchOne
-        //            }
-        //            print(query)
-        //        } catch {
-        //            print("uh oh. reading error: ", error)
-        //        }
         return Expense(id: 123, name: "", amount: 123, date: Date.now)
     }
     

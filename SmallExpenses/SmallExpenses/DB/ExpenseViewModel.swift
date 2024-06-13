@@ -18,6 +18,10 @@ class ExpenseViewModel {
         self.expenseRepo = expenseRepo
     }
     
+    var total: Double {
+        expenses.reduce(0.0) { $0 + $1.amount }
+    }
+    
     func fetchAllExpenses() async {
         do {
             self.expenses = try expenseRepo.getAll()
